@@ -20,11 +20,6 @@ const PROGMEM uint8_t phaseMap[] = {
 		0b00010001
 };
 
-drvCtx drvArr[] = {
-		{0, 0, 0, 1, &PORTC, 0x0F},
-		{0, 0, 0, -1, &PORTC, 0xF0}
-};
-
 uint8_t stepper_do(drvCtx* drv){
 	if (drv->curPos == drv->dstPos) return 0;
 	if (drv->dstPos > drv->curPos){
