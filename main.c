@@ -5,4 +5,7 @@
  *      Author: ikhatckevich
  */
 
+int main (void){
 
+	return 0;
+}
