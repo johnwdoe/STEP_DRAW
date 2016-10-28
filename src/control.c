@@ -37,6 +37,13 @@ uint8_t control_setlocation(uint16_t l){
 	return 0;
 }
 
+void control_setactualcoords(uint16_t l){
+	//reset busy flag
+	flags &= ~(F_BUSY);
+	drives[0].curPos = l;
+	drives[0].dstPos = l;
+}
+
 ISR(TIMER2_COMP_vect){
 	if (flags & F_BUSY){
 		if (stepper_do(drives) == 0) flags ^= F_BUSY; //toggle to 0

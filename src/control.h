@@ -14,6 +14,7 @@
 
 void control_init(void);
 uint8_t control_setlocation(uint16_t l);
+void control_setactualcoords(uint16_t l);
 
 
 #endif /* CONTROL_H_ */
