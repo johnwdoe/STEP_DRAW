@@ -10,7 +10,7 @@
 #ifndef STEPPER_H_
 #define STEPPER_H_
 
-#include <stdio.h>
+#include <stdint.h>
 
 typedef struct {
 	volatile uint8_t phase; //номер текущей фазы (0-7)

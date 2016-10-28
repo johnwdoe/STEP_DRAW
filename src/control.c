@@ -7,6 +7,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "control.h"
+#include "stepper.h"
 
 #define T_DIV	(F_CPU/1024/F_MOT - 1)
 #define T_START	(TCCR2 |= (7<<CS20))

@@ -8,6 +8,8 @@
 #ifndef CONTROL_H_
 #define CONTROL_H_
 
+#include <stdint.h>
+
 #define F_MOT (400)
 
 void control_init(void);
