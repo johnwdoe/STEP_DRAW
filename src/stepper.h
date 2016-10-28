@@ -3,6 +3,8 @@
  *
  *  Created on: Oct 27, 2016
  *      Author: ikhatckevich
+ *
+ *  Ѕиблиотечка умеет либо шагать, либо ниху€
  */
 
 #ifndef STEPPER_H_
@@ -19,8 +21,6 @@ typedef struct {
 	const uint8_t ctlMask; //маска части порта (0x0F, 0xF0)
 	//const uint8_t ctlOffset; //смещение... хз как объ€снить. может выпилю к херам
 }drvCtx;
-
-void stepper_init (void);
 
 /*
  * производит один шаг к позиции назначени€

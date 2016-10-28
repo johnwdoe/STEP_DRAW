@@ -6,7 +6,6 @@
  */
 
 #include "stepper.h"
-#include <avr/io.h>
 #include <avr/pgmspace.h>
 
 const PROGMEM uint8_t phaseMap[] = {
