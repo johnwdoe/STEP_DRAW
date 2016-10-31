@@ -10,7 +10,11 @@
 int main (void){
 	_delay_ms(2000);
 	control_init();
-	control_setlocation(4096);
-	while (1);
+	while (1){
+		control_setlocation(4096);
+		_delay_ms(10000);
+		control_setlocation(0);
+		_delay_ms(10000);
+	}
 	return 0;
 }
