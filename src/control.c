@@ -16,11 +16,13 @@
 
 volatile uint8_t flags = 0x00;
 drvCtx drives[] = {
-		{0, 0, 0, 1, &PORTC, 0x0F}
+		{0, 0, 0, 1, &PORTC, 0x0F},
+		{0, 0, 0, -1, &PORTD, 0xF0}
 };
 
 void control_init(void){
 	DDRC |= 0x0F;
+	DDRD |= 0xF0;
 	//initialize 8-bit timer 2 to f = F_MOT
 	TCCR2 = (1<<WGM21 /*CTC - mode*/);
 	OCR2 = (uint8_t) T_DIV;

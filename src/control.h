@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-#define F_MOT (400)
+#define F_MOT (500)
 
 void control_init(void);
 uint8_t control_setlocation(uint16_t l);
