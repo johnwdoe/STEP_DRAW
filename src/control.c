@@ -45,10 +45,8 @@ uint8_t control_setlocation(uint16_t l1, uint16_t l2){
 
 uint8_t control_setxy(uint16_t x, uint16_t y){
 	if (x > distance) return 0xFF; //impossible o_O
-	//convert x,y to l1, l2
-	//x= sqr(xx+yy)
+	//convert x,y to l1, l2 and move
 	uint16_t l1, l2;
-	//uint32_t tmp = (x*x + y*y);
 	l1 = slow_sqrt(slow_pwr2(x) + slow_pwr2(y));
 	//tmp = ((distance-x)*(distance-x) + y*y);
 	l2 = slow_sqrt(slow_pwr2(distance-x) + slow_pwr2(y));
