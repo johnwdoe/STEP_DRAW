@@ -11,9 +11,9 @@ int main (void){
 	_delay_ms(2000);
 	control_init();
 	while (1){
-		control_setlocation(4096);
+		control_setlocation(4096, 590);
 		_delay_ms(10000);
-		control_setlocation(0);
+		control_setlocation(0, 4096);
 		_delay_ms(10000);
 	}
 	return 0;
