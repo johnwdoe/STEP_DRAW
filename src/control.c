@@ -17,7 +17,7 @@
 #define F_BUSY	(1)
 
 volatile uint8_t flags = 0x00;
-uint16_t distance = 0;
+volatile uint16_t distance = 0;
 drvCtx drives[] = {
 		{0, 0, 0, 1, &PORTC, 0x0F},
 		{0, 0, 0, -1, &PORTD, 0xF0}

@@ -9,9 +9,9 @@
 #define UART_H_
 #include <stdio.h>
 
-#define DAUD_RATE (115200)
+#define BAUD_RATE (38400)
 
 void uart_init(void);
 int uart_putchar(char c, FILE *stream);
-int uart_getchar(FILE *stream);
+uint8_t uart_getchar(FILE *stream);
 #endif /* UART_H_ */
