@@ -15,7 +15,7 @@
 typedef struct {
 	volatile uint8_t phase; //номер текущей фазы (0-7)
 	volatile uint16_t curPos; //текущая позиция (в шагах)
-	uint16_t dstPos; //позиция назначения
+	volatile uint16_t dstPos; //позиция назначения
 	const int8_t fwdPhaseDir; //приращение фазы, соответствующее движению вперед (+/- 1)
 	volatile uint8_t* ctlPort; //ссылка на порт (передается как &PORTx)
 	const uint8_t ctlMask; //маска части порта (0x0F, 0xF0)
