@@ -13,5 +13,5 @@
 
 void uart_init(void);
 int uart_putchar(char c, FILE *stream);
-uint8_t uart_getchar(FILE *stream);
+int uart_getchar(FILE *stream);
 #endif /* UART_H_ */

@@ -8,11 +8,15 @@
 #include "slow_math.h"
 
 uint32_t slow_pwr2 (uint16_t d){
-	uint32_t res = 0;
+/*	uint32_t res = 0;
 	uint16_t iter = d;
 	while(iter--) res+=d;
 	return res;
+*/
+	return (uint32_t)d*d;
 }
+
+
 
 uint16_t slow_sqrt (uint32_t d){
 	uint32_t res = 0;
