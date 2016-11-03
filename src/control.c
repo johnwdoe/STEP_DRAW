@@ -8,7 +8,6 @@
 #include <avr/interrupt.h>
 #include "control.h"
 #include "stepper.h"
-//#include <math.h>
 #include "slow_math.h"
 
 #define T_DIV	(F_CPU/1024/F_MOT - 1)
@@ -61,6 +60,16 @@ void control_setactualcoords(uint16_t l1, uint16_t l2, uint16_t d){
 	drives[1].curPos = l2;
 	drives[1].dstPos = l2;
 	distance = d;
+}
+
+void control_drawline(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2){
+	//TODO: see https://hubstub.ru/programming/47-risovanie-geometricheskih-figur-natftdisplee-na-primeressd1289.html
+	uint16_t deltaX = (x2 > x1) ? x2 - x1 : x1 - x2;
+	uint16_t deltaY = (y2 > y1) ? y2 - y1 : y1 - y2;
+	int8_t signX = x1 < x2 ? 1 : -1;
+	int8_t signY = y1 < y2 ? 1 : -1;
+
+
 }
 
 ISR(TIMER2_COMP_vect){
