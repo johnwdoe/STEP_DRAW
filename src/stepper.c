@@ -9,6 +9,7 @@
 #include <avr/pgmspace.h>
 
 const PROGMEM uint8_t phaseMap[] = {
+//		  ABCDABCD
 		0b10011001,
 		0b10001000,
 		0b11001100,

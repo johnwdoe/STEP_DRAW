@@ -6,6 +6,7 @@
  */
 #include "src/control.h"
 #include "src/uart.h"
+#include "src/draw.h"
 #include <util/delay.h>
 #include <avr/pgmspace.h>
 #include <stdio.h>
@@ -13,40 +14,40 @@
 static FILE uartio = FDEV_SETUP_STREAM(uart_putchar, uart_getchar, _FDEV_SETUP_RW);
 
 int main (void){
-	uint16_t t1, t2, t3;
+	uint16_t t1, t2, t3, t4;
 	char cmd;
 	stdout = &uartio;
 	stdin = &uartio;
 
 	_delay_ms(2000);
-	control_init();
+	control_hw_init();
 	uart_init();
 
-	printf_P(PSTR("DIS = "));
+	printf_P(PSTR("DISTANCE = "));
 	scanf_P(PSTR("%s"), &t3);
 	printf_P(PSTR("%u\nACT (l1 l2) = "), t3);
 	scanf_P(PSTR("%u%u"), &t1, &t2);
-	control_setactualcoords(t1, t2, t3);
+	control_init(t1, t2, t3);
 	printf_P(PSTR("(%u %u)\n"), t1, t2);
 
 	while (1){
-		printf_P(PSTR("CMD: C X Y = "));
-		scanf_P(PSTR("%s%u%u"), &cmd, &t1, &t2);
+		printf_P(PSTR("Waiting for command...\n"));
+		scanf_P(PSTR("%s"), &cmd);
 		switch (cmd){
-		case 'D':
-		case 'd':
-			control_setxy(t1, t2);
-			printf_P(PSTR("%s %u %u SENT TO DRV AS DECART\n"), &cmd, t1, t2);
+		case 'm':
+			scanf_P(PSTR("%u%u"), &t1, &t2);
+			control_move(t1, t2);
+			printf_P(PSTR("OK\n"));
 			break;
-		case 'L':
 		case 'l':
-			control_setlocation(t1, t2);
-			printf_P(PSTR("%s %u %u SENT TO DRV AS LINE\n"), &cmd, t1, t2);
+			scanf_P(PSTR("%u%u%u%u"), &t1, &t2, &t3, &t4);
+			draw_line(t1, t2, t3, t4);
+			printf_P(PSTR("OK\n"));
 			break;
-		case 'S':
-		case 's':
-			control_setactualcoords(t1, t2, t3);
-			printf_P(PSTR("NEW LOCATION %u %u SET. DIS = %u"), t1, t2, t3);
+		case 'c':
+			scanf_P(PSTR("%u%u%u"), &t1, &t2, &t3);
+			draw_circle(t1, t2, t3);
+			printf_P(PSTR("OK\n"));
 			break;
 		default:
 			printf_P(PSTR("ERR\n"));
