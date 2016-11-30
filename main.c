@@ -15,6 +15,7 @@ static FILE uartio = FDEV_SETUP_STREAM(uart_putchar, uart_getchar, _FDEV_SETUP_R
 
 int main (void){
 	uint16_t t1, t2, t3, t4;
+	//uint16_t t1s, t2s;
 	char cmd;
 	stdout = &uartio;
 	stdin = &uartio;
@@ -24,7 +25,7 @@ int main (void){
 	uart_init();
 
 	printf_P(PSTR("DISTANCE = "));
-	scanf_P(PSTR("%s"), &t3);
+	scanf_P(PSTR("%u"), &t3);
 	printf_P(PSTR("%u\nACT (l1 l2) = "), t3);
 	scanf_P(PSTR("%u%u"), &t1, &t2);
 	control_init(t1, t2, t3);
@@ -47,6 +48,11 @@ int main (void){
 		case 'c':
 			scanf_P(PSTR("%u%u%u"), &t1, &t2, &t3);
 			draw_circle(t1, t2, t3);
+			printf_P(PSTR("OK\n"));
+			break;
+		case 'f':
+			scanf_P(PSTR("%u%u"), &t1, &t2);
+			control_correct(t1, t2);
 			printf_P(PSTR("OK\n"));
 			break;
 		default:

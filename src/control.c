@@ -45,10 +45,19 @@ uint8_t control_init(uint16_t l1, uint16_t l2, uint16_t d){
 uint8_t control_move(uint16_t x, uint16_t y){
 	if (!(flags&F_INITIALIZED)) return CONTROL_NOINIT;
 	if (x > distance) return CONTROL_OUTOFAREA;
-	while (flags&F_BUSY); //тупим
+	while (flags&F_BUSY); //пїЅпїЅпїЅпїЅпїЅ
 	d1.dstPos = slow_sqrt(slow_pwr2(x) + slow_pwr2(y));
 	d2.dstPos = slow_sqrt(slow_pwr2(distance - x) + slow_pwr2(y));
-	flags |= F_BUSY; //погнали
+	flags |= F_BUSY; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	return CONTROL_OK;
+}
+
+uint8_t control_correct (uint16_t l1, uint16_t l2){
+	if (!(flags&F_INITIALIZED)) return CONTROL_NOINIT;
+	while (flags&F_BUSY); //пїЅпїЅпїЅпїЅпїЅ
+	d1.dstPos = l1;
+	d2.dstPos = l2;
+	flags |= F_BUSY; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	return CONTROL_OK;
 }
 

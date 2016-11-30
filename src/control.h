@@ -30,4 +30,9 @@ uint8_t control_init(uint16_t l1, uint16_t l2, uint16_t d);
  * move carriage to (x,y)*/
 uint8_t control_move(uint16_t x, uint16_t y);
 
+/*
+ * set relative l, r length
+ */
+
+uint8_t control_correct (uint16_t l1, uint16_t l2);
 #endif /* CONTROL_H_ */
