@@ -42,6 +42,7 @@ int main (void){
 			break;
 		case 'l':
 			scanf_P(PSTR("%u%u%u%u"), &t1, &t2, &t3, &t4);
+			printf_P(PSTR("Try to draw line (%u, %u) - (%u, %u)...\n"), t1, t2, t3, t4);
 			draw_line(t1, t2, t3, t4);
 			printf_P(PSTR("OK\n"));
 			break;

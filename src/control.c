@@ -45,7 +45,7 @@ uint8_t control_init(uint16_t l1, uint16_t l2, uint16_t d){
 uint8_t control_move(uint16_t x, uint16_t y){
 	if (!(flags&F_INITIALIZED)) return CONTROL_NOINIT;
 	if (x > distance) return CONTROL_OUTOFAREA;
-	while (flags&F_BUSY); //пїЅпїЅпїЅпїЅпїЅ
+	while (flags&F_BUSY); //ждем пока освободится
 	d1.dstPos = slow_sqrt(slow_pwr2(x) + slow_pwr2(y));
 	d2.dstPos = slow_sqrt(slow_pwr2(distance - x) + slow_pwr2(y));
 	flags |= F_BUSY; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
@@ -54,15 +54,15 @@ uint8_t control_move(uint16_t x, uint16_t y){
 
 uint8_t control_correct (uint16_t l1, uint16_t l2){
 	if (!(flags&F_INITIALIZED)) return CONTROL_NOINIT;
-	while (flags&F_BUSY); //пїЅпїЅпїЅпїЅпїЅ
+	while (flags&F_BUSY);
 	d1.dstPos = l1;
 	d2.dstPos = l2;
-	flags |= F_BUSY; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	flags |= F_BUSY;
 	return CONTROL_OK;
 }
 
 ISR(TIMER2_COMP_vect){
 	if (flags & F_BUSY){
-		if ((stepper_do(&d1) | stepper_do(&d2)) == 0) flags ^= F_BUSY; //toggle to 0
+		if ((stepper_do(&d1) | stepper_do(&d2)) == 0) flags &= ~F_BUSY; //reset flag
 	}
 }
