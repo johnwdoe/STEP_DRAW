@@ -31,6 +31,7 @@ uint8_t stepper_do(drvCtx* drv){
 		drv->curPos--;
 		drv->phase -= drv->fwdPhaseDir;
 	}
+	//выводим в порт новое состояние фаз двигателя
 	*drv->ctlPort = (*drv->ctlPort & ~drv->ctlMask) | (pgm_read_byte(&phaseMap[drv->phase & 7]) & drv->ctlMask);
 	return 1;
 }

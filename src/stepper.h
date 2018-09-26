@@ -19,7 +19,6 @@ typedef struct {
 	const int8_t fwdPhaseDir; //приращение фазы, соответствующее движению вперед (+/- 1)
 	volatile uint8_t* ctlPort; //ссылка на порт (передается как &PORTx)
 	const uint8_t ctlMask; //маска части порта (0x0F, 0xF0)
-	//const uint8_t ctlOffset; //смещение... хз как объяснить. может выпилю к херам
 }drvCtx;
 
 /*
