@@ -25,7 +25,7 @@ uint8_t stepper_do(drvCtx* drv){
 	if (drv->dstPos > drv->curPos){
 		//move forward
 		drv->curPos++;
-		drv->phase += drv->fwdPhaseDir; //инкремент фазы с поправкой на ориентацию двигателя
+		drv->phase += drv->fwdPhaseDir; //РёРЅРєСЂРµРјРµРЅС‚ С„Р°Р·С‹ СЃ РїРѕРїСЂР°РІРєРѕР№ РЅР° РѕСЂРёРµРЅС‚Р°С†РёСЋ РґРІРёРіР°С‚РµР»СЏ
 	}else{
 		//move backward
 		drv->curPos--;

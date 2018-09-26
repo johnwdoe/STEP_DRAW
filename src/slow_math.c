@@ -23,6 +23,6 @@ uint16_t slow_sqrt (uint32_t d){
 			d -= temp;
 		}
 	}while( mask >>= 2 );
-	if( res < d && res < 0xFFFF ) ++res; // îêğóãëåíèå ğåçóëüòàòà
+	if( res < d && res < 0xFFFF ) ++res; // Ğ¾ĞºÑ€ÑƒĞ³Ğ»ĞµĞ½Ğ¸Ğµ Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚Ğ°
 	return (uint16_t)res;
 }
